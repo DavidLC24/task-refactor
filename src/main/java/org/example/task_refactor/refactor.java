@@ -2,7 +2,8 @@ package org.example.task_refactor;
 
 import java.util.Scanner;
 
-public class refactor {public static void main(String[] args) {
+public class refactor {
+    public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     int opt;
     do {
