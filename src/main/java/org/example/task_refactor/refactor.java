@@ -4,49 +4,64 @@ import java.util.Scanner;
 
 public class refactor {public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    int Opt;
+    int opt;
     do {
-        System.out.println("Elige una opción:");
-        System.out.println("1. Sumatorio");
-        System.out.println("2. Media");
-        System.out.println("3. Salir");
-        Opt = scanner.nextInt();
-        scanner.nextLine();
+        opt = chooseOption(scanner);
 
-        if (Opt == 1) {
-            int chisme;
-            do {
-                System.out.print("Introduce un entero positivo: ");
-                chisme = scanner.nextInt();
-                scanner.nextLine();
-            } while (chisme <= 0);
+        if (opt == 1) {
+            int number = askNumber(scanner);
 
-            int La_suma = 0;
-            for (int i = 1; i <= chisme; i++) {
-                La_suma += i;
-            }
+            sum(number);
+        } else if (opt == 2) {
+            int number = askNumber(scanner);
 
-            System.out.println("El sumatorio es " + La_suma);
-        } else if (Opt == 2) {
-            int _zzzz;
-            do {
-                System.out.print("Introduce un entero positivo: ");_zzzz = scanner.nextInt();
-                scanner.nextLine();
-            } while (_zzzz <= 0);
-
-            int sum = 0;
-            for (int cosa = 0; cosa < _zzzz; cosa++) {
-                System.out.print("Introduce un número:");
-                sum += scanner.nextInt();
-                scanner.nextLine();
-            }
-
-            System.out.println("La media es " + (sum / _zzzz));
-        } else if (Opt == 3) {
+            average(number, scanner);
+        } else if (opt == 3) {
             System.out.println("Saliendo...");
         } else {
             System.out.println("Opción inválida");
         }
 
-    } while (Opt != 3);}
+    } while (opt != 3);}
+
+    private static void average(int number, Scanner scanner) {
+        int addition = 0;
+        for (int i = 0; i < number; i++) {
+            System.out.print("Introduce un número: ");
+            addition += scanner.nextInt();
+            scanner.nextLine();
+        }
+
+        System.out.println("La media es " + (addition / number));
+    }
+
+    private static void sum(int number) {
+        int addition = 0;
+        for (int i = 1; i <= number; i++) {
+            addition += i;
+        }
+
+        System.out.println("El sumatorio es " + addition);
+    }
+
+    private static int askNumber(Scanner scanner) {
+        int number;
+        do {
+            System.out.print("Introduce un entero positivo: ");
+            number = scanner.nextInt();
+            scanner.nextLine();
+        } while (number <= 0);
+        return number;
+    }
+
+    private static int chooseOption(Scanner scanner) {
+        int opt;
+        System.out.println("Elige una opción:");
+        System.out.println("1. Sumatorio");
+        System.out.println("2. Media");
+        System.out.println("3. Salir");
+        opt = scanner.nextInt();
+        scanner.nextLine();
+        return opt;
+    }
 }
